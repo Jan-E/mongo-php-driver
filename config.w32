@@ -334,6 +334,7 @@ if (PHP_MONGODB != "no") {
     }
 
     ADD_FLAG("CFLAGS_MONGODB", "/EHsc /D U_USING_ICU_NAMESPACE=1");
+	mongoc_opts.MONGOC_ENABLE_ICU = 1;
   }
 
   if (typeof COMPILER_NAME === 'string') {
