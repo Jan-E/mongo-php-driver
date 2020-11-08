@@ -65,8 +65,8 @@ function MONGODB_ADD_SOURCES(dir, file_list)
 }
 
 ARG_ENABLE("mongodb", "MongoDB support", "no");
-ARG_WITH("mongodb-sasl", "MongoDB: Build against Cyrus-SASL", "yes");
-ARG_WITH("mongodb-client-side-encryption", "MongoDB: Enable client-side encryption", "yes");
+ARG_WITH("mongodb-sasl", "MongoDB: Build against Cyrus-SASL", "no");
+ARG_WITH("mongodb-client-side-encryption", "MongoDB: Enable client-side encryption", "no");
 
 if (PHP_MONGODB != "no") {
   /* Note: ADD_EXTENSION_DEP() cannot be used to declare that we depend on the
