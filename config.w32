@@ -55,9 +55,13 @@ function create_folder_recursive(path)
 
 function MONGODB_ADD_SOURCES(dir, file_list)
 {
-  // Ensure obj_dir and all parent directories exist
-  create_folder_recursive(FSO.BuildPath(get_define('BUILD_DIR'), dir));
-  ADD_SOURCES(configure_module_dirname + dir, file_list, "mongodb", dir);
+  if (configure_module_dirname.match("ext.mongodb") || configure_module_dirname.match("pecl.mongodb")) {
+    ADD_SOURCES(configure_module_dirname + dir, file_list, "mongodb");
+  } else {
+    // Ensure obj_dir and all parent directories exist
+    create_folder_recursive(FSO.BuildPath(get_define('BUILD_DIR'), dir));
+    ADD_SOURCES(configure_module_dirname + dir, file_list, "mongodb", dir);
+  }
 }
 
 ARG_ENABLE("mongodb", "MongoDB support", "no");
